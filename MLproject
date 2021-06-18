@@ -1,0 +1,8 @@
+name: My Project
+
+entry_points:
+  main:
+    parameters:
+      cp: {type: float, default: 0.05}
+      maxdepth: {type: int, default: 3}
+    command: "Rscript train.R -P cp={cp} maxdepth={maxdepth}"
