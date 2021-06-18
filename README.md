@@ -1,13 +1,13 @@
-Reproducible example for my problem with MLflow Projects
+##### Reproducible example for my problem with MLflow Projects
 
-Omgevingsvariabele met URI
+The command that I run:
 
-mlflow run . -b databricks --backend-config cluster-spec.json --experiment-id 3869152022501207
+`mlflow run . -b databricks --backend-config cluster-spec.json --experiment-id 3869152022501207`
 
-Parameters worden wel gelogd
+The parameters (`cp` and `maxdepth`) are logged. I can verify this in the remote tracking server.
+However the run has status `UNFINISHED`. And the job output shows an error:
 
-Foutmelding
-
+```
 Traceback (most recent call last):
   File "/databricks/python3/bin/mlflow", line 8, in <module>
     sys.exit(cli())
@@ -54,3 +54,6 @@ mlflow.exceptions.MlflowException: API request to endpoint /api/2.0/mlflow/runs/
 </body>
 </html>
 '
+```
+
+It seems there is an authorization problem. But I verified the Databricks config file. It contains the right token. What else could I have missed?
